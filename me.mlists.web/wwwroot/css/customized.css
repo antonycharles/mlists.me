@@ -1,0 +1,169 @@
+﻿*,body, a, h1, h2, h3, h4, h5, h6, button, p, i, strong, b, li, td, th {
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    line-height: 0px;
+    margin: 0px;
+}
+
+.logo__img {
+    width: 100px;
+}
+
+.navbar__button {
+    border: none;
+    font-size: 1.8em;
+    margin: 0;
+    padding: 0;
+}
+
+.lista {
+    background-color:#FFF;
+    margin-bottom:.5em;
+    min-width:300px;
+    padding: .5rem;
+    position:relative;
+    width:100%;
+}
+.lista__titulo {
+    font-size: 1.4em;
+    font-weight: 400;
+    line-height: 23px;
+}
+.lista__img{
+    width:40px;
+}
+.lista__body {
+    margin-right: 20px;
+    overflow: hidden;
+    padding-bottom:.3rem;
+}
+.lista__dropdown {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+    .lista__dropdown .dropdown-toggle::after{
+        display:none;
+    }
+
+
+.tarefas__header{
+    text-align:center;
+}
+.tarefas__header__titulo {
+    font-size: 1.3em;
+    font-weight:400;
+    margin: 0px;
+}
+.tarefas__header__descricao{
+    font-size:0.8em;
+}
+.tarefas__header__menu {
+    margin-top: .5em;
+    text-align: center;
+    width: 100%;
+}
+.tarefas__header__figure{
+    width:100%;
+}
+.tarefas__header__figure__img {
+    width: 40px;
+}
+
+.tarefa__item.checked{
+    display:none;
+}
+
+/*General style*/
+.tarefas__item__checkbox {
+    color: #666;
+    cursor: pointer;
+    font-size: 1.6em;
+    margin-bottom: 0px;
+    position: relative;
+}
+    .tarefas__item__checkbox input{
+        display:none;
+    }
+    .tarefas__item__checkbox input[type="checkbox"] + .tarefas__item__checkbox__label:before {
+        content: "\f0c8";
+        font-family: "Font Awesome 5 Pro";
+        speak: none;
+        font-style: normal;
+        text-transform: none;
+        font-weight: normal;
+        font-variant: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        width: 1em;
+        display: inline-block;
+    }
+        .tarefas__item__checkbox input[type="checkbox"]:checked + .tarefas__item__checkbox__label:before {
+            animation: effect 250ms ease-in;
+            content: "\f14a";
+            color: #4BA594;
+        }
+        .tarefas__item__checkbox input[type="checkbox"]:disabled + .tarefas__item__checkbox__label {
+            color: #aaa;
+        }
+
+.monsters__select {
+    border: 1px solid #DEDEDE;
+    height: 130px;
+    overflow: auto;
+}
+.monsters__select__bloco {
+    border: 1px solid #DEDEDE;
+    cursor:pointer;
+    height: 50px;
+    padding: 3px;
+    text-align: center;
+    width: 20%;
+}
+.monsters__select__bloco.ativo{
+    background-color:#000;
+}
+.monsters__select__image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    display:inline-block;
+    height: 100%;
+    width:50px;
+}
+
+@keyframes effect {
+    0% {transform: scale(0);}
+    25% {transform: scale(1.3);}
+    75% {transform: scale(1.4);}
+    100% {transform: scale(1);}
+}
+
+@media (min-width: 767px) {
+    .lista{
+        width:48%;
+    }
+
+    .tarefas__header {
+        text-align: left;
+    }
+    .tarefas__header__figure{
+        margin:0px;
+        margin-right:1em;
+        width:auto;
+    }
+    .tarefas__header__titulo {
+        font-size: 1.7em;
+    }
+    .tarefas__header__menu {
+        margin-top: 0;
+        width: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .lista {
+        width: 32.5%;
+    }
+}

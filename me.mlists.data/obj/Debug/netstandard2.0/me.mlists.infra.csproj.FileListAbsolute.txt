@@ -1,0 +1,5 @@
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netstandard2.0\me.mlists.infra.deps.json
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netstandard2.0\me.mlists.infra.dll
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netstandard2.0\me.mlists.infra.csprojAssemblyReference.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netstandard2.0\me.mlists.infra.AssemblyInfoInputs.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netstandard2.0\me.mlists.infra.AssemblyInfo.cs

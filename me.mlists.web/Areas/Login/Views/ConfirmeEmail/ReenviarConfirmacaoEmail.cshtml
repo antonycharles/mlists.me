@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "ReenvioConfirmacaoEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <section class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-lg-8">
+            <div class="card mt-4 ml-auto mr-auto">
+                <div class="card-header bg-white">
+                    <h3><i class="fas fa-sign text-secondary"></i> Confirmação e-mail</h3>
+                </div>
+                <div class="card-body">
+                    <p>Deseja reenviar novamente e-mail de confirmação.</p>
+                    <form id="logoutForm" class="form-inline" asp-route="Reenviar_novamente_confirmacao_email" asp-route-usuarioId="@ViewData["UsuarioId"]">
+                        <button id="logout" type="submit" class="btn btn-success font-weight-bold">
+                            Reenviar confirmação
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

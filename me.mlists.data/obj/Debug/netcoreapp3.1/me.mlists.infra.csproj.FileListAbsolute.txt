@@ -1,0 +1,15 @@
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.infra.deps.json
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.infra.runtimeconfig.json
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.infra.runtimeconfig.dev.json
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.infra.dll
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.infra.pdb
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.core.dll
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\bin\Debug\netcoreapp3.1\me.mlists.core.pdb
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.csprojAssemblyReference.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.AssemblyInfoInputs.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.AssemblyInfo.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.csproj.CopyComplete
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.dll
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.pdb
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.genruntimeconfig.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.infra\obj\Debug\netcoreapp3.1\me.mlists.infra.csproj.CoreCompileInputs.cache
