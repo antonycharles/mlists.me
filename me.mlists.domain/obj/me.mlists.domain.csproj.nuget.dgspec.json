@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {}
+    "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
+    "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
+        "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
         "projectName": "me.mlists.domain",
-        "projectPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
+        "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
         "packagesPath": "C:\\Users\\WDeveloper\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\obj\\",
+        "outputPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",

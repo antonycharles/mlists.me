@@ -2477,11 +2477,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.service\\me.mlists.service.csproj",
+      "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.service\\me.mlists.service.csproj",
       "projectName": "me.mlists.service",
-      "projectPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.service\\me.mlists.service.csproj",
+      "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.service\\me.mlists.service.csproj",
       "packagesPath": "C:\\Users\\WDeveloper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.service\\obj\\",
+      "outputPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2497,11 +2497,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.data\\me.mlists.data.csproj": {
-              "projectPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.data\\me.mlists.data.csproj"
+            "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj": {
+              "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj"
             },
-            "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
-              "projectPath": "C:\\Users\\WDeveloper\\Source\\Repos\\antonycharles\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj"
+            "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
+              "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj"
             }
           }
         }
