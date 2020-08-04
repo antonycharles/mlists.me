@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fdzj6AWF/lY2jP/+o/guStzcdhVNVaWhao2q4YGSrkn+0196ZpjHUjn95uaGQDnixzNfFkPo3uCrpPYy6Uo2Tw==",
+  "dgSpecHash": "LrYu+WnRG/Xoxs7ZWKAfH0epc9+KAuLPX5Y0V4Xjfiu+49Xj2L6nO0qxeoKmBhgm8uxZO53PE+mbplBSahlz4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj",
+  "projectFilePath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\me.mlists.data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WDeveloper\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\WDeveloper\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

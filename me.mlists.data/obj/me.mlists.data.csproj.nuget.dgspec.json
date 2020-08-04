@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj": {}
+    "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\me.mlists.data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj": {
+    "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\me.mlists.data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj",
+        "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\me.mlists.data.csproj",
         "projectName": "me.mlists.data",
-        "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\me.mlists.data.csproj",
+        "projectPath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\me.mlists.data.csproj",
         "packagesPath": "C:\\Users\\WDeveloper\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.data\\obj\\",
+        "outputPath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
-                "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj"
+              "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
+                "projectPath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\me.mlists.domain.csproj"
               }
             }
           }
@@ -93,14 +93,14 @@
         }
       }
     },
-    "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
+    "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\me.mlists.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
+        "projectUniqueName": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
         "projectName": "me.mlists.domain",
-        "projectPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
+        "projectPath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\me.mlists.domain.csproj",
         "packagesPath": "C:\\Users\\WDeveloper\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\WDeveloper\\Desktop\\mlists.me\\me.mlists.domain\\obj\\",
+        "outputPath": "C:\\Users\\WDeveloper\\Desktop\\Mlists.me\\me.mlists.domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",

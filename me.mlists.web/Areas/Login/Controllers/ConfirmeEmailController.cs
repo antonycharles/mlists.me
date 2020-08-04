@@ -53,7 +53,7 @@ namespace me.mlists.web.Areas.Login.Controllers
 
         [HttpGet]
         [Route("reenviar-confirmacao-email", Name = "Reenviar_confirmacao_email")]
-        public async Task<IActionResult> ReenviarConfirmacaoEmailAsync(string usuarioId)
+        public IActionResult ReenviarConfirmacaoEmail(string usuarioId)
         {
             if (usuarioId == null)
                 return View("Error");
