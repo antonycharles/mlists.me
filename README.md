@@ -29,7 +29,7 @@ Para iniciar o desenvolvimento, é necessário:
   },</pre>
   </li>
   <li>
-    Subir Migrations para o banco de dados
+    Subir Migrations para o banco de dados no projeto me.mlists.data
     <pre>
       Update-Database -Context AppIdentityContext
       Update-Database -Context ApplicationContext</pre>
