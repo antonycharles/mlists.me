@@ -8,7 +8,6 @@ C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\me.m
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\me.mlists.web.RazorCoreGenerate.cache
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\ConfirmeEmail\AguardandoConfirmacao.cshtml.g.cs
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\ConfirmeEmail\ConfirmacaoEmailAsync.cshtml.g.cs
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\ConfirmeEmail\Emails\_ConfirmacaoEmailPartial.cshtml.g.cs
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\ConfirmeEmail\ReenviarConfirmacaoEmail.cshtml.g.cs
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\Login\Logar.cshtml.g.cs
 C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\Registro\Registrar.cshtml.g.cs
@@ -346,3 +345,9 @@ C:\Users\WDeveloper\Source\Repos\antonycharles\mlists.me\me.mlists.web\obj\Debug
 C:\Users\WDeveloper\Source\Repos\antonycharles\mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\me.mlists.web.dll
 C:\Users\WDeveloper\Source\Repos\antonycharles\mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\me.mlists.web.pdb
 C:\Users\WDeveloper\Source\Repos\antonycharles\mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\me.mlists.web.genruntimeconfig.cache
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\EsqueciMinhaSenha\EsqueciMinhaSenha.cshtml.g.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\EsqueciMinhaSenha\EsqueciMinhaSenhaConfirmado.cshtml.g.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\RedefinirSenha\RedefinirSenha.cshtml.g.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\RedefinirSenha\RedefinirSenhaConfirmado.cshtml.g.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\ConfirmeEmail\partial\_EmailTemplateConfirmacaoEmail.cshtml.g.cs
+C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.web\obj\Debug\netcoreapp3.1\Razor\Areas\Login\Views\EsqueciMinhaSenha\partial\_EmailTemplateEsqueciMinhaSenha.cshtml.g.cs

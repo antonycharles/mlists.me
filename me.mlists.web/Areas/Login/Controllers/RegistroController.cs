@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using me.mlists.domain.Models;
 using me.mlists.service.Services;
 using me.mlists.web.Areas.Login.ViewModels;
+using me.mlists.web.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,7 @@ namespace me.mlists.web.Areas.Login.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Registrar()
+        public IActionResult Registrar()
         {
             return View();
         }
@@ -63,7 +64,19 @@ namespace me.mlists.web.Areas.Login.Controllers
 
             return View(modelo);
         }
-        
+
+        [HttpPost("reenviar-confirmacao-email", Name = "form_reenviar_confirmacao_email")]
+        public async Task<IActionResult> ReenviarConfirmacaoEmailAsync(string usuarioId = null)
+        {
+            if (usuarioId == null)
+                return View("Error");
+
+            var usuario = await _userManager.FindByIdAsync(usuarioId);
+            await EnviarEmailDeConfirmacaoAsync(usuario);
+
+            return View("../ConfirmeEmail/AguardandoConfirmacao");
+        }
+
         private async Task EnviarEmailDeConfirmacaoAsync(ApplicationUser usuario)
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(usuario);
@@ -72,8 +85,10 @@ namespace me.mlists.web.Areas.Login.Controllers
                 new { usuarioId = usuario.Id, token = token },
                 Request.Scheme);
 
-            await _emailService.SendEmailAsync(usuario.Email, "Confirme seu email - MLists",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+            var templateEmail = await this.RenderViewToStringAsync("~/Areas/Login/Views/ConfirmeEmail/partial/_EmailTemplateConfirmacaoEmail.cshtml", 
+                new EmailTemplateConfirmacaoEmailViewModel(callbackUrl));
+
+            await _emailService.SendEmailAsync(usuario.Email, "Confirmação de email - MLists", templateEmail);
 
         }
 
