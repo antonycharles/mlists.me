@@ -6,6 +6,8 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using me.mlists.domain.Models;
 using me.mlists.service.Services;
+using me.mlists.web.Areas.Login.ViewModels;
+using me.mlists.web.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -26,8 +28,7 @@ namespace me.mlists.web.Areas.Login.Controllers
             _emailService = emailService;
         }
 
-        [HttpGet]
-        [Route("",Name = "Confirmacao_email")]
+        [HttpGet("",Name = "Confirmacao_email")]
         public async Task<IActionResult> ConfirmacaoEmailAsync(string usuarioId, string token)
         {
             if (usuarioId == null || token == null)
@@ -51,9 +52,8 @@ namespace me.mlists.web.Areas.Login.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("reenviar-confirmacao-email", Name = "Reenviar_confirmacao_email")]
-        public async Task<IActionResult> ReenviarConfirmacaoEmailAsync(string usuarioId)
+        [HttpGet("reenviar-confirmacao-email", Name = "Reenviar_confirmacao_email")]
+        public IActionResult ReenviarConfirmacaoEmail(string usuarioId)
         {
             if (usuarioId == null)
                 return View("Error");
@@ -61,33 +61,6 @@ namespace me.mlists.web.Areas.Login.Controllers
             ViewData["UsuarioId"] = usuarioId;
 
             return View();
-        }
-
-        [HttpPost]
-        [Route("reenviar-novamente-confirmacao-email", Name = "Reenviar_novamente_confirmacao_email")]
-        public async Task<IActionResult> ReenviarNovamenteConfirmacaoEmailAsync(string usuarioId = null)
-        {
-            if (usuarioId == null)
-                return View("Error");
-
-            var usuario = await _userManager.FindByIdAsync(usuarioId);
-            await EnviarEmailDeConfirmacaoAsync(usuario);
-
-            return View("AguardandoConfirmacao");
-        }
-
-
-        private async Task EnviarEmailDeConfirmacaoAsync(ApplicationUser usuario)
-        {
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(usuario);
-            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-            var callbackUrl = Url.RouteUrl("Confirmacao_email",
-                new { usuarioId = usuario.Id, token = token },
-                Request.Scheme);
-
-            await _emailService.SendEmailAsync(usuario.Email, "Confirme seu email - MLists",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
         }
     }
 }

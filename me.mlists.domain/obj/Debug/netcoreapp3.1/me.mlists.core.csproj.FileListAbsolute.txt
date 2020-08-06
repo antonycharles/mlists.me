@@ -1,9 +1,0 @@
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\bin\Debug\netcoreapp3.1\me.mlists.core.deps.json
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\bin\Debug\netcoreapp3.1\me.mlists.core.dll
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.csprojAssemblyReference.cache
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.AssemblyInfoInputs.cache
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.AssemblyInfo.cs
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\bin\Debug\netcoreapp3.1\me.mlists.core.pdb
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.dll
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.pdb
-C:\Users\WDeveloper\Desktop\Mlists.me\me.mlists.core\obj\Debug\netcoreapp3.1\me.mlists.core.csproj.CoreCompileInputs.cache

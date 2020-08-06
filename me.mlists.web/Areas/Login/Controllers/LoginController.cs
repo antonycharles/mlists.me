@@ -27,9 +27,15 @@ namespace me.mlists.web.Areas.Login.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Logar(string returnUrl = null)
+        public IActionResult Logar(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/p/lista");
+            returnUrl = returnUrl ?? Url.Action("Index","Lista",new { area = "Painel" });
+
+            if (_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect(returnUrl);
+            }
+
 
             ViewData["returnUrl"] = returnUrl;
             return View();

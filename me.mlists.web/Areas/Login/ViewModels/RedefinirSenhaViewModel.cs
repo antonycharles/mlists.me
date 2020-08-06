@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 
 namespace me.mlists.web.Areas.Login.ViewModels
 {
-    public class RegistrarViewModel
+    public class RedefinirSenhaViewModel
     {
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Nome(apelido) obrigatório!")]
-        [Display(Name = "Nome")]
-        public string Nome { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Email obrigatório!")]
-        [EmailAddress(ErrorMessage = "Preencha com um email valido!")]
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Senha obrigatório!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
+        [Display(Name = "Nova senha")]
         public string Senha { get; set; }
 
         [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Confirmar senha obrigatório!")]
-        [Display(Name = "Confirmar senha")]
+        [Display(Name = "Confirmar nova senha")]
         [Compare("Senha", ErrorMessage = "A senha está diferente do valor confirmar senha.")]
         public string ConfirmarSenha { get; set; }
+
+        public string Token { get; set; }
     }
 }

@@ -1,0 +1,9 @@
+/.vs
+/me.mlists.web/bin
+/me.mlists.web/obj
+/me.mlists.data/obj
+/me.mlists.data/bin
+/me.mlists.domain/obj
+/me.mlists.domain/bin
+/me.mlists.service/obj
+/me.mlists.service/bin
