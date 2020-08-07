@@ -17,7 +17,7 @@
                     <p>Olá, faça login para acessar sua conta!</p>
                 </div>
                 <div class="card-body">
-                    <form asp-area="Login" asp-controller="Login" asp-action="Logar" asp-route-returnUrl="@ViewData["returnUrl"]" method="post" class="needs-validation">
+                    <form asp-area="Login" asp-controller="Login" asp-action="Logar" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation">
                         <div asp-validation-summary="ModelOnly" data-valmsg-summary="true" class="alert alert-danger"></div>
                         <div class="form-group">
                             <label asp-for="Email" class="font-weight-bold"></label>
@@ -46,6 +46,26 @@
                             </button>
                         </div>
                     </form>
+                    <div class="text-center mb-3">
+                        <h5 class="p-0 m-0"><span class="badge badge-light">ou</span></h5>
+                    </div>
+                    <section>
+                        @{
+                            if (Model.ExternalLogins != null && Model.ExternalLogins.Count > 0)
+                            {
+                                <form id="external-account" asp-area="Login" asp-controller="LoginExterno" asp-action="LoginExterno" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                    <div>
+                                        <p>
+                                            @foreach (var provider in Model.ExternalLogins)
+                                            {
+                                                <button type="submit" class="btn btn-block btn-sm btn-@provider.Name" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">Fazer login com @provider.DisplayName</button>
+                                            }
+                                        </p>
+                                    </div>
+                                </form>
+                            }
+                        }
+                    </section>
                 </div>
             </div>
         </div>

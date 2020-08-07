@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,5 +27,7 @@ namespace me.mlists.web.Areas.Login.ViewModels
         [Display(Name = "Confirmar senha")]
         [Compare("Senha", ErrorMessage = "A senha está diferente do valor confirmar senha.")]
         public string ConfirmarSenha { get; set; }
+
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }

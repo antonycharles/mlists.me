@@ -133,6 +133,15 @@
     width:50px;
 }
 
+.btn-Facebook {
+    background-color: #3b5998;
+    color:#FFF;
+}
+.btn-Facebook:hover{
+    color:#FFF;
+    opacity:0.9;
+}
+
 @keyframes effect {
     0% {transform: scale(0);}
     25% {transform: scale(1.3);}

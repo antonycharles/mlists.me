@@ -21,21 +21,26 @@ namespace me.mlists.web.Areas.Login.Controllers
     [Route("l/registro")]
     public class RegistroController : Controller
     {
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailService _emailService;
 
         public RegistroController(
             UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             IEmailService emailService)
         {
             _userManager = userManager;
-            _emailService = emailService; 
+            _emailService = emailService;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
-        public IActionResult Registrar()
+        public async Task<IActionResult> RegistrarAsync()
         {
-            return View();
+            var modelo = new RegistrarViewModel();
+            modelo.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            return View(modelo);
         }
 
         [HttpPost]
@@ -51,7 +56,6 @@ namespace me.mlists.web.Areas.Login.Controllers
 
                 if (resultado.Succeeded)
                 {
-
                     await EnviarEmailDeConfirmacaoAsync(usuario);
                     return View("../ConfirmeEmail/AguardandoConfirmacao");
                 }

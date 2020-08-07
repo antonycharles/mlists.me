@@ -27,7 +27,7 @@ namespace me.mlists.web.Areas.Login.Controllers
         }
 
         [HttpGet]
-        public IActionResult Logar(string returnUrl = null)
+        public async Task<IActionResult> LogarAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Action("Index","Lista",new { area = "Painel" });
 
@@ -36,15 +36,16 @@ namespace me.mlists.web.Areas.Login.Controllers
                 return LocalRedirect(returnUrl);
             }
 
-
-            ViewData["returnUrl"] = returnUrl;
-            return View();
+            var modelo = new LoginViewModel();
+            modelo.ReturnUrl = returnUrl;
+            modelo.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            return View(modelo);
         }
 
         [HttpPost]
         public async Task<IActionResult> Logar(LoginViewModel modelo, string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/p/lista");
+            returnUrl = returnUrl ?? Url.Action("Index", "Lista", new { area = "Painel" });
 
             if (ModelState.IsValid)
             {
