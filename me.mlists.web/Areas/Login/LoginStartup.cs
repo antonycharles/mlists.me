@@ -48,6 +48,7 @@ namespace me.mlists.web.Areas.Login
                 });
 
             });
+
         }
 
         internal class IdentityErrorDescriberPtBr : IdentityErrorDescriber
