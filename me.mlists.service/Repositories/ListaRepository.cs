@@ -105,6 +105,7 @@ namespace me.mlists.service.Repositories
         public async Task<Lista> UpdateListaAsync(Lista lista, string userId)
         {
             var resultado = await context.Listas
+                                        .Include(f => f.Monster)
                                         .Where(
                                             w => w.Participantes.Any(
                                                 f => f.UserId == userId &&
@@ -115,6 +116,12 @@ namespace me.mlists.service.Repositories
                 throw new ArgumentException("Alteração não realizada!");
 
             resultado.Update(lista);
+            
+            if(resultado.Monster.Id != lista.MonsterId)
+            {
+                resultado.setMonster(context.Monsters.First(w => w.Id == resultado.MonsterId));
+            }
+
             await context.SaveChangesAsync();
 
             return resultado;

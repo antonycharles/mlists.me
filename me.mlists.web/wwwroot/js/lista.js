@@ -54,8 +54,12 @@
     submitUpdateListaDone(atributos, response) {
         $(atributos.form).parents('.modal.remove-hide').modal('hide');
         if (response.isSucesso) {
-            //mensagemService.showModalSucesso(response.mensagem);
-            location.reload();
+            mensagemService.showModalSucesso(response.mensagem);
+            $('*[data-lista-id="' + response.lista.id + '"]').find('.lista__titulo__text').text(response.lista.nome);
+            $('*[data-lista-id="' + response.lista.id + '"]').find('.tarefas__header__titulo').text(response.lista.nome);
+            $('*[data-lista-id="' + response.lista.id + '"]').find('.lista__img').attr('src', response.lista.monster.linkUrl);
+            $('*[data-lista-id="' + response.lista.id + '"]').find('.tarefas__header__figure__img ').attr('src', response.lista.monster.linkUrl);
+            //location.reload();
         } else {
             var htmlModal = $(response).modal('show');
             $.validator.unobtrusive.parse(htmlModal);
@@ -88,7 +92,7 @@
                 $(atributos.form).parents('.lista').remove();
             }
         } else {
-            mensagemService.showModalErro(response.mensagem);
+            mensagemService.showModalErro(response.mensagens);
         }
     }
 

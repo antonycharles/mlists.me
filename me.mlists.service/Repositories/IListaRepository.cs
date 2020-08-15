@@ -19,7 +19,9 @@ namespace me.mlists.service.Repositories
         Task<Lista> UpdateListaAsync(Lista lista, string userId);
 
         Task UpdateListaStatusLixeiraAsync(string listaId, string userId);
+
         Task UpdateListaRestaurarStatusAtivoAsync(string listaId, string userId);
+
         Task ExcluirPermanenteListaAsync(string listaId, string userId);
 
     }

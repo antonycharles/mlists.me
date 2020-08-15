@@ -49,7 +49,11 @@ namespace me.mlists.data.Migrations.Application
                 {
                     convidado_id = table.Column<string>(nullable: false),
                     ListaId = table.Column<string>(nullable: false),
-                    email_convidado = table.Column<string>(maxLength: 100, nullable: false)
+                    ConvidadoPorId = table.Column<string>(nullable: false),
+                    email_convidado = table.Column<string>(maxLength: 100, nullable: false),
+                    DataEnvio = table.Column<DateTime>(nullable: false),
+                    DataResposta = table.Column<DateTime>(nullable: true),
+                    IsAceitou = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,7 +94,7 @@ namespace me.mlists.data.Migrations.Application
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(maxLength: 255, nullable: false),
                     ListaId = table.Column<string>(nullable: false),
-                    participantePerfil = table.Column<int>(nullable: false)
+                    ParticipantePerfil = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

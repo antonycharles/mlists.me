@@ -9,8 +9,8 @@ using me.mlists.data.Data;
 namespace me.mlists.data.Migrations
 {
     [DbContext(typeof(AppIdentityContext))]
-    [Migration("20200728193536_StartAppIdentity")]
-    partial class StartAppIdentity
+    [Migration("20200812175748_StartAppIdentityContext")]
+    partial class StartAppIdentityContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

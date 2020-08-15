@@ -15,11 +15,11 @@
 }
 
 <article class="container mt-3">
-    <div class="tarefas card">
+    <div class="tarefas card"  data-lista-id="@Model.Id">
         <header class="tarefas__header card-header bg-white">
             <div class="d-flex flex-wrap">
                 <figure class="tarefas__header__figure align-self-center">
-                    <img src="~/imgs/monsters/@Model.Monster.Url" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
+                    <img src="@Model.Monster.LinkUrl" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
                 </figure>
                 <div class=" media-body align-self-center">
                     <h2 class="tarefas__header__titulo">@Model.Nome</h2>

@@ -20,5 +20,10 @@ namespace me.mlists.web.Areas.Painel.ViewModels
         public int? ListaSecaoId { get; set; }
 
         public IList<ListaSecao> ListaSecores { get; set; }
+
+        public Tarefa ToTarefaInsert()
+        {
+            return new Tarefa(this.Nome, this.ListaId, this.DataVencimento);
+        }
     }
 }

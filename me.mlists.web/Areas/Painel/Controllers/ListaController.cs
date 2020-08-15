@@ -19,28 +19,34 @@ namespace me.mlists.web.Areas.Painel.Controllers
     [Route("p/lista")]
     public class ListaController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IListaRepository listaRepository;
-        private readonly IMonsterRepository monsterRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IListaRepository _listaRepository;
+        private readonly IConvidadoRepository _convidadoRepository;
+        private readonly IMonsterRepository _monsterRepository;
 
         public ListaController(
             UserManager<ApplicationUser> userManager,
             IListaRepository listaRepository,
+            IConvidadoRepository convidadoRepository,
             IMonsterRepository monsterRepository)
         {
-            this.listaRepository = listaRepository;
-            this.monsterRepository = monsterRepository;
-            this.userManager = userManager;
+            _listaRepository = listaRepository;
+            _monsterRepository = monsterRepository;
+            _convidadoRepository = convidadoRepository;
+            _userManager = userManager;
         }
 
         [HttpGet("{isLixeira?}")]
         public async Task<IActionResult> IndexAsync(bool? isLixeira = false)
         {
-            var listas = await listaRepository.GetAllListasByUserAsync(userManager.GetUserId(User), isLixeira);
+            var listas = await _listaRepository.GetAllListasByUserAsync(_userManager.GetUserId(User), isLixeira);
+            var convites = await _convidadoRepository.GetAllConvidadosByEmailAsync(User.Identity.Name);
 
             var listaViewModel = new ListaViewModel();
             listaViewModel.IsLixeira = isLixeira;
             listaViewModel.Listas = listas;
+            listaViewModel.UserId = _userManager.GetUserId(User);
+            listaViewModel.setConvites(convites);
 
             return View(listaViewModel);
         }
@@ -59,8 +65,8 @@ namespace me.mlists.web.Areas.Painel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var lista = new Lista(userManager.GetUserId(User), modelo.Nome);
-                    var listaResultado = await listaRepository.InsertListaAsync(lista);
+                    var lista = modelo.ToListaInsert(_userManager.GetUserId(User));
+                    var listaResultado = await _listaRepository.InsertListaAsync(lista);
 
                     var listaUrl = Url.Action("Index", "Tarefa", new { listaId = listaResultado.Id }, Request.Scheme);
                     return Json(new { isSucesso = true, listaUrl = HtmlEncoder.Default.Encode(listaUrl) });
@@ -77,18 +83,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         [HttpGet("update-lista/{listaId}", Name = "lista_get_update_lista")]
         public async Task<IActionResult> UpdateListaAsync(string listaId)
         {
-            var lista = await listaRepository.GetListaByIdAsync(listaId, userManager.GetUserId(User));
+            var lista = await _listaRepository.GetListaByIdAsync(listaId, _userManager.GetUserId(User));
 
             if(lista == null)
                 return RedirectToAction("IndexAsync");
 
-            var monsters = await monsterRepository.GetMonsters();
+            var monsters = await _monsterRepository.GetMonsters();
 
             var modelo = new ListaFormViewModel();
-            modelo.Id = lista.Id;
-            modelo.Nome = lista.Nome;
-            modelo.Descricao = lista.Descricao;
-            modelo.MonsterId = lista.MonsterId;
+            modelo.setInformacoesLista(lista);
             modelo.Monsters = monsters;
 
             return PartialView("partial/_UpdateLista",modelo);
@@ -102,8 +105,8 @@ namespace me.mlists.web.Areas.Painel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var lista = new Lista(modelo.Id,modelo.Nome,modelo.Descricao,modelo.MonsterId);
-                    var resultado = await listaRepository.UpdateListaAsync(lista, userManager.GetUserId(User));
+                    var lista = modelo.ToListaUpdate();
+                    var resultado = await _listaRepository.UpdateListaAsync(lista, _userManager.GetUserId(User));
 
 
                     return Json(new { isSucesso = true, mensagem = "Alteração realizada com sucesso!", lista = resultado });
@@ -125,7 +128,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await listaRepository.UpdateListaStatusLixeiraAsync(listaId, userManager.GetUserId(User));
+                    await _listaRepository.UpdateListaStatusLixeiraAsync(listaId, _userManager.GetUserId(User));
                     return Json(new { isSucesso = true, mensagem = "Lista excluida com sucesso." });
                 }
             }
@@ -134,7 +137,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors) });
+            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -145,7 +148,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await listaRepository.UpdateListaRestaurarStatusAtivoAsync(listaId, userManager.GetUserId(User));
+                    await _listaRepository.UpdateListaRestaurarStatusAtivoAsync(listaId, _userManager.GetUserId(User));
                     return Json(new { isSucesso = true, mensagem = "Restauração realizada com sucesso!" });
                 }
             }
@@ -154,7 +157,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors) });
+            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -165,7 +168,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await listaRepository.ExcluirPermanenteListaAsync(listaId, userManager.GetUserId(User));
+                    await _listaRepository.ExcluirPermanenteListaAsync(listaId, _userManager.GetUserId(User));
                     return Json(new { isSucesso = true, mensagem = "Lista excluida com sucesso." });
                 }
             }
@@ -174,7 +177,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors) });
+            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
     }
 }

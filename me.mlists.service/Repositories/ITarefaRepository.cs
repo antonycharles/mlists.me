@@ -13,6 +13,7 @@ namespace me.mlists.service.Repositories
         Task<Tarefa> UpdateTarefaAsync(Tarefa tarefa, string userId);
 
         Task UpdateTarefaCheckedTrueAsync(int tarefaId, string userId);
+
         Task UpdateTarefaLixeiraTrueAsync(int tarefaId, string userId);
     }
 }

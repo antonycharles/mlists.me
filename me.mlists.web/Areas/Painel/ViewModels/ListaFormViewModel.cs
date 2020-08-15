@@ -19,5 +19,23 @@ namespace me.mlists.web.Areas.Painel.ViewModels
         [Display(Name = "Monstros")]
         public int MonsterId { get; set; }
         public IList<Monster> Monsters { get; set; }
+
+        public void setInformacoesLista(Lista lista)
+        {
+            this.Id = lista.Id;
+            this.Nome = lista.Nome;
+            this.Descricao = lista.Descricao;
+            this.MonsterId = lista.MonsterId;
+        }
+
+        public Lista ToListaInsert(string userId)
+        {
+            return new Lista(userId, this.Nome);
+        }
+
+        public Lista ToListaUpdate()
+        {
+            return new Lista(this.Id, this.Nome, this.Descricao, this.MonsterId);
+        }
     }
 }

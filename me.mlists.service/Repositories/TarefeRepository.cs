@@ -35,7 +35,8 @@ namespace me.mlists.service.Repositories
         {
             var tarefaOriginal = await context.Tarefas
                                         .Where(
-                                            w => w.Lista.Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
+                                            w => w.Lista
+                                                .Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
                                             w.Id == tarefa.Id)
                                         .SingleOrDefaultAsync();
 
@@ -52,7 +53,8 @@ namespace me.mlists.service.Repositories
         {
             var tarefa = await context.Tarefas
                                         .Where(
-                                            w => w.Lista.Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
+                                            w => w.Lista
+                                                .Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
                                             w.Id == tarefaId)
                                         .SingleOrDefaultAsync();
 
@@ -67,7 +69,8 @@ namespace me.mlists.service.Repositories
         {
             var tarefa = await context.Tarefas
                                         .Where(
-                                            w => w.Lista.Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
+                                            w => w.Lista
+                                                .Participantes.Any(f => f.UserId == userId && f.ParticipantePerfil != ParticipantePerfilEnum.Bloqueado) &&
                                             w.Id == tarefaId)
                                         .SingleOrDefaultAsync();
 

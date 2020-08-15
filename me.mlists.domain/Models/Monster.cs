@@ -8,6 +8,10 @@ namespace me.mlists.domain.Models
     {
         public int Id { get; private set; }
         public string Url { get; set; }
+        public string LinkUrl { get
+            {
+                return $"/imgs/monsters/{this.Url}";
+            } }
         public IList<Lista> Listas { get; private set; }
 
         public Monster() 

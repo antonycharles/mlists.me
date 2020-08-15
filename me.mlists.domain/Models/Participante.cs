@@ -28,5 +28,12 @@ namespace me.mlists.domain.Models
             ListaId = lista.Id;
             ParticipantePerfil = ParticipantePerfilEnum.Administrador;
         }
+
+        public Participante(string userId, string listaId, ParticipantePerfilEnum participantePerfil)
+        {
+            UserId = userId;
+            ListaId = listaId;
+            ParticipantePerfil = participantePerfil;
+        }
     }
 }

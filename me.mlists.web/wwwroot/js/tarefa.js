@@ -67,7 +67,7 @@ class Tarefa {
             let tarefa = $(atributos.form).parents('.tarefa__item');
             tarefa.hide('slow', function () { tarefa.addClass('checked'); });
         } else {
-            mensagemService.showModalErro(response.mensagem);
+            mensagemService.showModalErro(response.mensagens);
         }
     }
 }
