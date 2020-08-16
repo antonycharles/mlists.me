@@ -55,7 +55,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                     var convidado = modelo.ToConvidadoInsert(_userManager.GetUserId(User));
                     var resultado = await _convidadoRepository.InsertConvidado(convidado);
                     this.EnviarEmailParaConvidadoAsync(resultado);
-                    return Json(new { isSucesso = true, mensagem = "Convite enviado com sucesso!" });
+                    return Ok(new { mensagem = "Convite enviado com sucesso!" });
                 }
             }
             catch(Exception e)
@@ -63,7 +63,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -72,20 +72,18 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await _convidadoRepository.ExcluirConvidado(convidadoId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Convite excluido com sucesso!" });
-                }
+                await _convidadoRepository.ExcluirConvidado(convidadoId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Convite excluido com sucesso!" });
             }
             catch (Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost("resposta-convite")]
         public async Task<IActionResult> RespostaContiteAsync([FromBody] ConvidadoRespostaFormViewModel modelo)
         {
@@ -97,12 +95,13 @@ namespace me.mlists.web.Areas.Painel.Controllers
 
                     if (modelo.IsAceitou)
                     {
+                        await _convidadoRepository.ExcluirConvidado(convidado.Id, _userManager.GetUserId(User));
                         var listaUrl = Url.Action("Index", "Tarefa", new { listaId = convidado.ListaId }, Request.Scheme);
-                        return Json(new { isSucesso = true, url = HtmlEncoder.Default.Encode(listaUrl), mensagem = "Convite aceito!" });
+                        return Ok(new { url = HtmlEncoder.Default.Encode(listaUrl), mensagem = "Convite aceito!" });
                     }
                     else
                     {
-                        return Json(new { isSucesso = true, mensagem = "Convite não aceito com sucesso!" });
+                        return Ok(new { mensagem = "Convite não aceito com sucesso!" });
                     }
                 }
             }
@@ -111,7 +110,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         private async void EnviarEmailParaConvidadoAsync(Convidado convidado)
@@ -124,7 +123,6 @@ namespace me.mlists.web.Areas.Painel.Controllers
                 new EmailTemplateConvidadoViewModel(callbackUrl, User.Identity.Name));
 
             await _emailService.SendEmailAsync(convidado.EmailConvite, "Convite para Lista - MLists", templateEmail);
-
         }
     }
 }

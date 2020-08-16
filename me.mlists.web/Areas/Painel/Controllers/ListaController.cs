@@ -69,7 +69,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                     var listaResultado = await _listaRepository.InsertListaAsync(lista);
 
                     var listaUrl = Url.Action("Index", "Tarefa", new { listaId = listaResultado.Id }, Request.Scheme);
-                    return Json(new { isSucesso = true, listaUrl = HtmlEncoder.Default.Encode(listaUrl) });
+                    return Ok(new { listaUrl = HtmlEncoder.Default.Encode(listaUrl) });
                 }
             }
             catch(Exception e)
@@ -108,8 +108,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
                     var lista = modelo.ToListaUpdate();
                     var resultado = await _listaRepository.UpdateListaAsync(lista, _userManager.GetUserId(User));
 
-
-                    return Json(new { isSucesso = true, mensagem = "Alteração realizada com sucesso!", lista = resultado });
+                    return Ok(new { mensagem = "Alteração realizada com sucesso!", lista = resultado });
                 }
             }
             catch(Exception e)
@@ -126,18 +125,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await _listaRepository.UpdateListaStatusLixeiraAsync(listaId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Lista excluida com sucesso." });
-                }
+                await _listaRepository.UpdateListaStatusLixeiraAsync(listaId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Lista excluida com sucesso." });
             }
             catch(Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -146,18 +142,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await _listaRepository.UpdateListaRestaurarStatusAtivoAsync(listaId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Restauração realizada com sucesso!" });
-                }
+                await _listaRepository.UpdateListaRestaurarStatusAtivoAsync(listaId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Restauração realizada com sucesso!" });
             }
             catch(Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -166,18 +159,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await _listaRepository.ExcluirPermanenteListaAsync(listaId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Lista excluida com sucesso." });
-                }
+                await _listaRepository.ExcluirPermanenteListaAsync(listaId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Lista excluida com sucesso." });
             }
             catch(Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
     }
 }

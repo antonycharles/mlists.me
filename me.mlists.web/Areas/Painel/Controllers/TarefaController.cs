@@ -72,7 +72,7 @@ namespace me.mlists.web.Areas.Painel.Controllers
 
                     var tarefaHtml = await this.RenderViewToStringAsync("~/Areas/Painel/Views/Tarefa/partial/_Tarefa.cshtml",tarefaResultado);
 
-                    return Json(new { isSucesso = true, tarefaHtml = tarefaHtml });
+                    return Ok(new { tarefaHtml });
                 }
             }
             catch(Exception e)
@@ -89,18 +89,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
-                {
-                    await _tarefaRepository.UpdateTarefaCheckedTrueAsync(tarefaId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Tarefa concluida com sucesso!" });
-                }
+                await _tarefaRepository.UpdateTarefaCheckedTrueAsync(tarefaId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Tarefa concluida com sucesso!" });
             }
             catch(Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
 
         [ValidateAntiForgeryToken]
@@ -109,18 +106,15 @@ namespace me.mlists.web.Areas.Painel.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await _tarefaRepository.UpdateTarefaLixeiraTrueAsync(tarefaId, _userManager.GetUserId(User));
-                    return Json(new { isSucesso = true, mensagem = "Tarefa excluida com sucesso!" });
-                }
+                await _tarefaRepository.UpdateTarefaLixeiraTrueAsync(tarefaId, _userManager.GetUserId(User));
+                return Ok(new { mensagem = "Tarefa excluida com sucesso!" });
             }
             catch (Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return Json(new { isSucesso = false, mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
+            return BadRequest(new { mensagens = ModelState.Values.SelectMany(x => x.Errors.Select(x => x.ErrorMessage)) });
         }
     }
 }

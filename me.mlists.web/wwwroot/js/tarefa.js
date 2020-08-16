@@ -23,19 +23,18 @@ class Tarefa {
                 dados.DataVencimento = null;
             }
 
-            ajaxService.setModalFormPost(atributos, dados, this.submitNovaTarefaDone);
+            ajaxService.setModalFormPost(atributos, dados, this.submitNovaTarefaDone, this.submitNovaTarefaFail);
         }
     }
 
     submitNovaTarefaDone(atributos, response) {
         $(atributos.form).parents('.modal.remove-hide').modal('hide');
-        if (response.isSucesso) {
-            $('.list-group').append(response.tarefaHtml);
-            //window.location.replace(response.listaUrl);
-        } else {
-            var htmlModal = $(response).modal('show');
-            $.validator.unobtrusive.parse(htmlModal);
-        }
+        $('.list-group').append(response.tarefaHtml);
+    }
+
+    submitNovaTarefaFail(atributos, response) {
+        var htmlModal = $(response).modal('show');
+        $.validator.unobtrusive.parse(htmlModal);
     }
 
     sendMarcarTarefaChecked(input) {
@@ -47,7 +46,7 @@ class Tarefa {
         };
         let dados = $(form).serializeObject();
 
-        ajaxService.setModalFormPost(atributos, dados, this.sendMarcarTarefaCheckedDone);
+        ajaxService.setModalFormPost(atributos, dados, this.sendMarcarTarefaCheckedDone, this.sendMarcarTarefaCheckedFail);
     }
 
     sendMoverTarefaLixeira(button) {
@@ -59,16 +58,16 @@ class Tarefa {
         };
         let dados = $(form).serializeObject();
 
-        ajaxService.setModalFormPost(atributos, dados, this.sendMarcarTarefaCheckedDone);
+        ajaxService.setModalFormPost(atributos, dados, this.sendMarcarTarefaCheckedDone, this.sendMarcarTarefaCheckedFail);
     }
 
     sendMarcarTarefaCheckedDone(atributos, response) {
-        if (response.isSucesso) {
-            let tarefa = $(atributos.form).parents('.tarefa__item');
-            tarefa.hide('slow', function () { tarefa.addClass('checked'); });
-        } else {
-            mensagemService.showModalErro(response.mensagens);
-        }
+        let tarefa = $(atributos.form).parents('.tarefa__item');
+        tarefa.hide('slow', function () { tarefa.addClass('checked'); });
+    }
+
+    sendMarcarTarefaCheckedFail() {
+        mensagemService.showModalErro(response.mensagens);
     }
 }
 

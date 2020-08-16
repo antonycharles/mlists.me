@@ -39,9 +39,10 @@
                         <ul class="list-group list-group-flush">
                             @foreach (var convidado in Model.Convidados)
                             {
-                                <li class="list-group-item d-flex bd-highlight p-2">
+                                <li class="list-group-item d-flex  justify-content-between bd-highlight p-2">
                                     <p class="m-0 align-self-center">@convidado.EmailConvite</p>
-                                    <form method="post" class="ml-auto" asp-area="Painel" asp-controller="Convidado" asp-action="ExcluirConvite" asp-route-convidadoId="@convidado.Id">
+                                    <p class="m-0 align-self-center badge badge-secondary">@(convidado.IsAceitou == false ? "Não aceitou" : "Esperando...")</p>
+                                    <form method="post" asp-area="Painel" asp-controller="Convidado" asp-action="ExcluirConvite" asp-route-convidadoId="@convidado.Id">
                                         <button class="btn btn-light" type="button" onclick="convidado.sendExcluirConvidado(this)"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 </li>

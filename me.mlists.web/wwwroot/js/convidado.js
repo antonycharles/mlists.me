@@ -17,19 +17,18 @@
 
             let dados = $(form).serializeObject();
 
-            ajaxService.setModalFormPost(atributos, dados, this.submitEnviarConviteDone);
+            ajaxService.setModalFormPost(atributos, dados, this.submitEnviarConviteDone, this.submitEnviarConviteFail);
         }
     }
 
     submitEnviarConviteDone(atributos, response) {
         $(atributos.form).parents('.modal.remove-hide').modal('hide');
-        if (response.isSucesso) {
-            mensagemService.showModalSucesso(response.mensagem);
-            console.log(response);
-        } else {
-            var htmlModal = $(response).modal('show');
-            $.validator.unobtrusive.parse(htmlModal);
-        }
+        mensagemService.showModalSucesso(response.mensagem);
+    }
+
+    submitEnviarConviteFail(atributos, response) {
+        var htmlModal = $(response).modal('show');
+        $.validator.unobtrusive.parse(htmlModal);
     }
 
     sendExcluirConvidado(button) {
@@ -41,16 +40,16 @@
         };
         let dados = $(form).serializeObject();
 
-        ajaxService.setModalFormPost(atributos, dados, this.sendExcluirConvidadoDone);
+        ajaxService.setModalFormPost(atributos, dados, this.sendExcluirConvidadoDone, this.sendExcluirConvidadoFail);
     }
 
     sendExcluirConvidadoDone(atributos, response) {
-        if (response.isSucesso) {
-            mensagemService.showModalSucesso(response.mensagem);
-            $(atributos.form).parents('li').remove();
-        } else {
-            mensagemService.showModalErro(response.mensagens);
-        }
+        mensagemService.showModalSucesso(response.mensagem);
+        $(atributos.form).parents('li').remove();
+    }
+
+    sendExcluirConvidadoFail(atributos, response) {
+        mensagemService.showModalErro(response.mensagens);
     }
 
     submitResponderConvite(form, event) {
@@ -67,20 +66,20 @@
 
             let dados = $(form).serializeObject();
 
-            ajaxService.setModalFormPost(atributos, dados, this.submitResponderConviteDone);
+            ajaxService.setModalFormPost(atributos, dados, this.submitResponderConviteDone, this.submitResponderConviteFail);
         }
     }
 
     submitResponderConviteDone(atributos, response) {
-        if (response.isSucesso) {
-            if (response.url) {
-                window.location.replace(response.url);
-            } else {
-                mensagemService.showModalSucesso(response.mensagem);
-            }
+        if (response.url) {
+            window.location.replace(response.url);
         } else {
-            mensagemService.showModalErro(response.mensagens);
+            mensagemService.showModalSucesso(response.mensagem);
         }
+    }
+
+    submitResponderConviteFail(atributos, response) {
+        mensagemService.showModalErro(response.mensagens);
     }
 }
 
