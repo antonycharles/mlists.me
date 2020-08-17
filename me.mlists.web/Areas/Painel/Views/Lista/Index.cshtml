@@ -11,6 +11,13 @@
     <script src="~/js/services/AjaxService.js"></script>
     <script src="~/js/services/MensagemService.js"></script>
     <script src="~/js/lista.js"></script>
+    <script src="~/js/convidado.js"></script>
+    <script src="~/js/participante.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#modal-convites-recebidos').modal('show');
+        });
+    </script>
 }
 
 <article class="container mt-3">
@@ -47,18 +54,18 @@
     <section class="d-flex flex-wrap justify-content-around">
         @foreach (var lista in Model.Listas)
         {
-            <div class="lista media">
-                <img src="~/imgs/monsters/@lista.Monster.Url" class="lista__img align-self-center mr-3" alt="" />
+            <div class="lista media" data-lista-id="@lista.Id">
+                <img src="@lista.Monster.LinkUrl" class="lista__img align-self-center mr-3" alt="" />
                 <div class="lista__body media-body align-self-center">
                     @if (lista.ListaStatus == me.mlists.domain.Enums.ListaStatusEnum.Ativo)
                     {
                         <h2 class="lista__titulo">
-                            <a asp-area="Painel" asp-controller="Tarefa" asp-action="Index" asp-route-listaId="@lista.Id" class="text-dark">@lista.Nome</a>
+                            <a asp-area="Painel" asp-controller="Tarefa" asp-action="Index" asp-route-listaId="@lista.Id" class="text-dark lista__titulo__text">@lista.Nome</a>
                         </h2>
                     }
                     else
                     {
-                        <h2 class="lista__titulo text-dark">@lista.Nome</h2>
+                        <h2 class="lista__titulo text-dark lista__titulo__text">@lista.Nome</h2>
                     }
                     <div class="d-block mt-4">
                         <button type="button" class="btn btn-sm btn-outline-success pt-0 pb-0">
@@ -78,14 +85,16 @@
                     </button>
                     @if (lista.ListaStatus == me.mlists.domain.Enums.ListaStatusEnum.Ativo)
                     {
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" asp-area="Painel" asp-controller="Tarefa" asp-action="Index" asp-route-listaId="@lista.Id">Visualizar</a>
-                            <button class="dropdown-item" type="button" onclick="lista.getFormModal('@Url.RouteUrl("lista_get_update_lista", new { listaId = @lista.Id })')">Alterar</button>
-                            <div class="dropdown-divider"></div>
-                            <form id="logoutForm" class="form-inline" asp-route="lista_post_mover_lixeira_lista" asp-route-listaId="@lista.Id" onsubmit="lista.submitMoverLixeira(this,event,false)">
-                                <button id="logout" type="submit" class="dropdown-item">Deletar</button>
-                            </form>
-                        </div>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" asp-area="Painel" asp-controller="Tarefa" asp-action="Index" asp-route-listaId="@lista.Id">Visualizar</a>
+                    <button class="dropdown-item" type="button" onclick="convidado.getFormModal('@Url.Action("ConvidadosLista","Convidado",new { area = "Painel", listaId = @lista.Id })')">Convidar amigos</button>
+                    <button class="dropdown-item" type="button" onclick="participante.getFormModal('@Url.Action("ParticipantesLista","Participante",new { area = "Painel", listaId = @lista.Id })')">Participantes</button>
+                    <button class="dropdown-item" type="button" onclick="lista.getFormModal('@Url.RouteUrl("lista_get_update_lista", new { listaId = @lista.Id })')">Alterar</button>
+                    <div class="dropdown-divider"></div>
+                    <form id="logoutForm" class="form-inline" asp-route="lista_post_mover_lixeira_lista" asp-route-listaId="@lista.Id" onsubmit="lista.submitMoverLixeira(this,event,false)">
+                        <button id="logout" type="submit" class="dropdown-item">Deletar</button>
+                    </form>
+                </div>
                     }
                     else if (lista.ListaStatus == me.mlists.domain.Enums.ListaStatusEnum.Lixeira)
                     {
@@ -105,3 +114,22 @@
     </section>
 </article>
 
+@if (Model.ConvitesViewModel.Count() > 0)
+{
+    <div class="modal remove-hide fade" id="modal-convites-recebidos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Convites</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Você possui convites para participar de outras listas:</p>
+                    <partial name="../Convidado/partial/_ResponderConvitesForm" model="Model.ConvitesViewModel" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

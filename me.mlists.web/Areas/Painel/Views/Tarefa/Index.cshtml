@@ -12,14 +12,15 @@
     <script src="~/js/services/MensagemService.js"></script>
     <script src="~/js/lista.js"></script>
     <script src="~/js/tarefa.js"></script>
+    <script src="~/js/convidado.js"></script>
 }
 
 <article class="container mt-3">
-    <div class="tarefas card">
+    <div class="tarefas card" data-lista-id="@Model.Id">
         <header class="tarefas__header card-header bg-white">
             <div class="d-flex flex-wrap">
                 <figure class="tarefas__header__figure align-self-center">
-                    <img src="~/imgs/monsters/@Model.Monster.Url" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
+                    <img src="@Model.Monster.LinkUrl" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
                 </figure>
                 <div class=" media-body align-self-center">
                     <h2 class="tarefas__header__titulo">@Model.Nome</h2>
@@ -33,6 +34,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <button class="dropdown-item" type="button" onclick="lista.getFormModal('@Url.RouteUrl("lista_get_update_lista", new { listaId = Model.Id })')">Alterar</button>
                             <button class="dropdown-item" type="button">Participantes</button>
+                            <button class="dropdown-item" type="button" onclick="convidado.getFormModal('@Url.Action("ConvidadosLista","Convidado",new { area = "Painel", listaId = Model.Id })')">Convidar amigos</button>
                             <div class="dropdown-divider"></div>
                             <form id="logoutForm" class="form-inline" asp-route="lista_post_mover_lixeira_lista" asp-route-listaId="@Model.Id" onsubmit="lista.submitMoverLixeira(this,event,true)">
                                 <button id="logout" type="submit" class="dropdown-item">Deletar</button>
@@ -57,9 +59,9 @@
                 </div>
             </div>
             <ul class="list-group list-group-flush d-flex flex-wrap">
-                @foreach (var tarefa in Model.Tarefas.OrderBy(o => o.Nome ).ToList())
+                @foreach (var tarefa in Model.Tarefas.OrderBy(o => o.Nome).ToList())
                 {
-                    <partial name="partial/_Tarefa" model="tarefa"/>
+                    <partial name="partial/_Tarefa" model="tarefa" />
                 }
             </ul>
             <div class="d-block">

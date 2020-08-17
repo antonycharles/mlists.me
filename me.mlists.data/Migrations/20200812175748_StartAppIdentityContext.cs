@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace me.mlists.data.Migrations
 {
-    public partial class StartAppIdentity : Migration
+    public partial class StartAppIdentityContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

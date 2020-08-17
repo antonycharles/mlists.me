@@ -24,11 +24,24 @@ namespace me.mlists.data.Migrations.Application
                         .HasColumnName("convidado_id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
+                    b.Property<string>("ConvidadoPorId")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("DataEnvio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DataResposta")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmailConvite")
                         .IsRequired()
                         .HasColumnName("email_convidado")
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
+
+                    b.Property<bool?>("IsAceitou")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ListaId")
                         .IsRequired()
@@ -125,13 +138,13 @@ namespace me.mlists.data.Migrations.Application
                         .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
+                    b.Property<int>("ParticipantePerfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
-
-                    b.Property<int>("participantePerfil")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -219,7 +232,7 @@ namespace me.mlists.data.Migrations.Application
 
             modelBuilder.Entity("me.mlists.domain.Models.Tarefa", b =>
                 {
-                    b.HasOne("me.mlists.domain.Models.Lista", null)
+                    b.HasOne("me.mlists.domain.Models.Lista", "Lista")
                         .WithMany("Tarefas")
                         .HasForeignKey("ListaId");
 

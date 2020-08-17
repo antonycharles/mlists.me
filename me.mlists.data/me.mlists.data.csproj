@@ -31,6 +31,10 @@
     <Compile Remove="Migrations\20200724214613_AppIdentity.Designer.cs" />
     <Compile Remove="Migrations\20200728013151_StartAppIdentityContext.cs" />
     <Compile Remove="Migrations\20200728013151_StartAppIdentityContext.Designer.cs" />
+    <Compile Remove="Migrations\20200728193536_StartAppIdentity.cs" />
+    <Compile Remove="Migrations\20200728193536_StartAppIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20200812174502_StartAppIdentity.cs" />
+    <Compile Remove="Migrations\20200812174502_StartAppIdentity.Designer.cs" />
     <Compile Remove="Migrations\Application\20200724011232_myLists.cs" />
     <Compile Remove="Migrations\Application\20200724011232_myLists.Designer.cs" />
     <Compile Remove="Migrations\Application\20200724012238_myLists.cs" />
@@ -49,6 +53,12 @@
     <Compile Remove="Migrations\Application\20200728193623_StartApplication.Designer.cs" />
     <Compile Remove="Migrations\Application\20200728202134_StartApplication.cs" />
     <Compile Remove="Migrations\Application\20200728202134_StartApplication.Designer.cs" />
+    <Compile Remove="Migrations\Application\20200802133309_StartApplicationContext.cs" />
+    <Compile Remove="Migrations\Application\20200802133309_StartApplicationContext.Designer.cs" />
+    <Compile Remove="Migrations\Application\20200812174603_StartApplicationContext.cs" />
+    <Compile Remove="Migrations\Application\20200812174603_StartApplicationContext.Designer.cs" />
+    <Compile Remove="Migrations\Application\20200812175813_StartApplicationContext.cs" />
+    <Compile Remove="Migrations\Application\20200812175813_StartApplicationContext.Designer.cs" />
     <Compile Remove="Migrations\Login\20200724024321_Login.cs" />
     <Compile Remove="Migrations\Login\20200724024321_Login.Designer.cs" />
   </ItemGroup>

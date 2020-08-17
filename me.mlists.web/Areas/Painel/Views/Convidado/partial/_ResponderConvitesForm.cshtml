@@ -1,0 +1,36 @@
+﻿@model IList<ConvidadoRespostaFormViewModel>
+
+<ul class="list-group list-group-flush">
+    @foreach (var convite in Model)
+    {
+        <li class="list-group-item d-flex p-0">
+            <div>
+                <span class="badge font-weight-normal">Nome Lista:</span>
+                <h5 class="m-0 ml-3">@convite.ListaNome</h5>
+            </div>
+            <div class="ml-auto">
+                <span class="badge d-block font-weight-normal mr-3">Aceitar convite:</span>
+                <form class="d-inline-block ml-3" 
+                      asp-area="Painel" 
+                      asp-controller="Convidado" 
+                      asp-action="RespostaContite"
+                      onsubmit="convidado.submitResponderConvite(this,event)">
+                    <input type="hidden" name="ConvidadoId" value="@convite.ConvidadoId" />
+                    <input type="hidden" name="UserId" value="@convite.UserId" />
+                    <input type="hidden" name="IsAceitou" value="true" />
+                    <button type="submit" class="btn btn-success btn-sm">Sim</button>
+                </form>
+                <form class="d-inline-block"
+                      asp-area="Painel"
+                      asp-controller="Convidado"
+                      asp-action="RespostaContite"
+                      onsubmit="convidado.submitResponderConvite(this,event)">
+                    <input type="hidden" name="ConvidadoId" value="@convite.ConvidadoId" />
+                    <input type="hidden" name="UserId" value="@convite.UserId" />
+                    <input type="hidden" name="IsAceitou" value="false" />
+                    <button type="submit" class="btn btn-danger btn-sm">Não</button>
+                </form>
+            </div>
+        </li>
+    }
+</ul>

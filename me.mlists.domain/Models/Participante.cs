@@ -10,7 +10,7 @@ namespace me.mlists.domain.Models
     {
         public int Id { get; private set; }
         public string UserId { get; private set; }
-        public ApplicationUser User { get; private set; }
+        public ApplicationUser User { get; set; }
         public string ListaId { get; private set; }
         public Lista Lista { get; private set; }
         public ParticipantePerfilEnum ParticipantePerfil { get; private set; }
@@ -27,6 +27,24 @@ namespace me.mlists.domain.Models
             Lista = lista;
             ListaId = lista.Id;
             ParticipantePerfil = ParticipantePerfilEnum.Administrador;
+        }
+
+        public Participante(string userId, string listaId, ParticipantePerfilEnum participantePerfil)
+        {
+            UserId = userId;
+            ListaId = listaId;
+            ParticipantePerfil = participantePerfil;
+        }
+
+        public Participante(int id, ParticipantePerfilEnum participantePerfilEnum)
+        {
+            Id = id;
+            ParticipantePerfil = participantePerfilEnum;
+        }
+
+        public void UpdatePerfil(Participante participante)
+        {
+            this.ParticipantePerfil = participante.ParticipantePerfil;
         }
     }
 }

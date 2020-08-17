@@ -63,6 +63,7 @@ namespace me.mlists.web
             services.AddTransient<ITarefaRepository, TarefeRepository>();
             services.AddTransient<IParticipanteRepository, ParticipanteRepository>();
             services.AddTransient<IListaSecaoRepository, ListaSecaoRepository>();
+            services.AddTransient<IConvidadoRepository, ConvidadoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

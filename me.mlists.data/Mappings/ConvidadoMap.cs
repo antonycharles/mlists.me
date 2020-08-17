@@ -24,6 +24,11 @@ namespace me.mlists.data.Mappings
                 .IsRequired()
                 .HasColumnName("email_convidado")
                 .HasMaxLength(100);
+            builder.Property(c => c.DataEnvio)
+                .IsRequired();
+            builder.Property(c => c.ConvidadoPorId)
+                .IsRequired();
+            builder.Ignore(c => c.UserId);
         }
     }
 }

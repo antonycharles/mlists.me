@@ -18,18 +18,18 @@
 
             let dados = $(form).serializeObject();
 
-            ajaxService.setModalFormPost(atributos, dados, this.submitNovaListaDone);
+            ajaxService.setModalFormPost(atributos, dados, this.submitNovaListaDone, this.submitNovaListaFail);
         }
     }
 
     submitNovaListaDone(atributos,response) {
         $(atributos.form).parents('.modal.remove-hide').modal('hide');
-        if (response.isSucesso) {
-            window.location.replace(response.listaUrl);
-        } else {
-            var htmlModal = $(response).modal('show');
-            $.validator.unobtrusive.parse(htmlModal);
-        }
+        window.location.replace(response.listaUrl);
+    }
+
+    submitNovaListaFail(atributos, response) {
+        var htmlModal = $(response).modal('show');
+        $.validator.unobtrusive.parse(htmlModal);
     }
 
     submitUpdateLista(form, event) {
@@ -47,19 +47,23 @@
             let dados = $(form).serializeObject();
             dados.MonsterId = parseInt(dados.MonsterId);
 
-            ajaxService.setModalFormPost(atributos, dados, this.submitUpdateListaDone);
+            ajaxService.setModalFormPost(atributos, dados, this.submitUpdateListaDone, this.submitUpdateListaFail);
         }
     }
 
     submitUpdateListaDone(atributos, response) {
         $(atributos.form).parents('.modal.remove-hide').modal('hide');
-        if (response.isSucesso) {
-            //mensagemService.showModalSucesso(response.mensagem);
-            location.reload();
-        } else {
-            var htmlModal = $(response).modal('show');
-            $.validator.unobtrusive.parse(htmlModal);
-        }
+
+        mensagemService.showModalSucesso(response.mensagem);
+        $('*[data-lista-id="' + response.lista.id + '"]').find('.lista__titulo__text').text(response.lista.nome);
+        $('*[data-lista-id="' + response.lista.id + '"]').find('.tarefas__header__titulo').text(response.lista.nome);
+        $('*[data-lista-id="' + response.lista.id + '"]').find('.lista__img').attr('src', response.lista.monster.linkUrl);
+        $('*[data-lista-id="' + response.lista.id + '"]').find('.tarefas__header__figure__img ').attr('src', response.lista.monster.linkUrl);
+    }
+
+    submitUpdateListaFail(atributos, response) {
+        var htmlModal = $(response).modal('show');
+        $.validator.unobtrusive.parse(htmlModal);
     }
 
     submitMoverLixeira(form, event,isReplace = false) {
@@ -75,21 +79,20 @@
         let dados = $(form).serializeObject();
         dados.MonsterId = parseInt(dados.MonsterId);
 
-        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone);
+        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone, this.submitMoverLixeiraFail);
     }
 
-
     submitMoverLixeiraDone(atributos, response) {
-        if (response.isSucesso) {
-            if (atributos.isReplace) {
-                window.location.replace(window.location.href);
-            } else {
-                mensagemService.showModalSucesso(response.mensagem);
-                $(atributos.form).parents('.lista').remove();
-            }
+        if (atributos.isReplace) {
+            window.location.replace(window.location.href);
         } else {
-            mensagemService.showModalErro(response.mensagem);
+            mensagemService.showModalSucesso(response.mensagem);
+            $(atributos.form).parents('.lista').remove();
         }
+    }
+
+    submitMoverLixeiraFail(atributos, response) {
+        mensagemService.showModalErro(response.responseJSON.mensagens);
     }
 
     submitRestaurarAtivo(form, event) {
@@ -104,7 +107,7 @@
         let dados = $(form).serializeObject();
         dados.MonsterId = parseInt(dados.MonsterId);
 
-        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone);
+        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone, this.submitMoverLixeiraFail);
     }
 
     submitExclusaoPermanente(form, event) {
@@ -119,7 +122,7 @@
         let dados = $(form).serializeObject();
         dados.MonsterId = parseInt(dados.MonsterId);
 
-        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone);
+        ajaxService.setModalFormPost(atributos, dados, this.submitMoverLixeiraDone, this.submitMoverLixeiraFail);
     }
 
     alterarMonster(img, monsterId) {
