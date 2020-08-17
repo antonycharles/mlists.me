@@ -22,6 +22,9 @@ Para iniciar o desenvolvimento, é necessário:
       git clone https://github.com/antonycharles/mlists.me.git</pre>
   </li>
   <li>
+    Criar arquivo <b>appsettings.json</b> usando o arquivo de modelo <b>appsettings-modelo.json</b>
+  </li>
+  <li>
     Adicionar informações do banco de dados no arquivo appsettings.json
     <pre>"ConnectionStrings": {
     "AppContextConnection": "Server=localhost;DataBase=NOME_BANCO_DE_DADOS;Uid=root;Pwd=SENHA_BANCO_DE_DADOS",
@@ -29,7 +32,7 @@ Para iniciar o desenvolvimento, é necessário:
   },</pre>
   </li>
   <li>
-    Subir Migrations para o banco de dados no projeto me.mlists.data
+    Subir Migrations para o banco de dados no projeto <b>me.mlists.data</b>
     <pre>
       Update-Database -Context AppIdentityContext
       Update-Database -Context ApplicationContext</pre>
