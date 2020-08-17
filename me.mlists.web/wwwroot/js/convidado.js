@@ -49,7 +49,7 @@
     }
 
     sendExcluirConvidadoFail(atributos, response) {
-        mensagemService.showModalErro(response.mensagens);
+        mensagemService.showModalErro(response.responseJSON.mensagens);
     }
 
     submitResponderConvite(form, event) {
@@ -79,7 +79,7 @@
     }
 
     submitResponderConviteFail(atributos, response) {
-        mensagemService.showModalErro(response.mensagens);
+        mensagemService.showModalErro(response.responseJSON.mensagens);
     }
 }
 

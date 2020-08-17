@@ -1,5 +1,11 @@
 ﻿class MensagemService {
-    showModalErro(mensagem,titulo = 'Erro:') {
+    showModalErro(mensagens, titulo = 'Erro:') {
+        var mensagem = mensagens;
+
+        if (Array.isArray(mensagens)) {
+            var mensagem = this.templateMensagemArrayLista(mensagens);
+        }
+
         let template = this.template(mensagem, titulo,'bg-danger');
         $(template).modal('show');
     }
@@ -25,6 +31,13 @@
                         </div>
                     </div>
                 </div>`;
+    }
+
+    templateMensagemArrayLista(lista) {
+        var resultado = "<ul>";
+        lista.forEach(item => resultado += `<li>${item}</li>`);
+        resultado += "</li>";
+        return resultado;
     }
 }
 

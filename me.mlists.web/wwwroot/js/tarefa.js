@@ -67,7 +67,7 @@ class Tarefa {
     }
 
     sendMarcarTarefaCheckedFail() {
-        mensagemService.showModalErro(response.mensagens);
+        mensagemService.showModalErro(response.responseJSON.mensagens);
     }
 }
 

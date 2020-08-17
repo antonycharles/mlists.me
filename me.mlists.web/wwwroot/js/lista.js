@@ -92,7 +92,7 @@
     }
 
     submitMoverLixeiraFail(atributos, response) {
-        mensagemService.showModalErro(response.mensagens);
+        mensagemService.showModalErro(response.responseJSON.mensagens);
     }
 
     submitRestaurarAtivo(form, event) {
