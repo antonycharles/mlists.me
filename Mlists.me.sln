@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85764243-7BC9-41F8-9B98-84122D9826DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "me.mlists.web", "me.mlists.web\me.mlists.web.csproj", "{F8FB2779-4876-4B62-9407-083A46592576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Me.Mlists.Web", "src\Me.Mlists.web\Me.Mlists.Web.csproj", "{F8FB2779-4876-4B62-9407-083A46592576}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "me.mlists.data", "me.mlists.data\me.mlists.data.csproj", "{AA1482BC-FCC1-4695-81A9-687A06673B36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Me.Mlists.Data", "src\Me.Mlists.data\Me.Mlists.Data.csproj", "{AA1482BC-FCC1-4695-81A9-687A06673B36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "me.mlists.domain", "me.mlists.domain\me.mlists.domain.csproj", "{070CFC55-5D2D-4BE3-8E0D-C8A4E764592E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Me.Mlists.Models", "src\Me.Mlists.Models\Me.Mlists.Models.csproj", "{070CFC55-5D2D-4BE3-8E0D-C8A4E764592E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "me.mlists.service", "me.mlists.service\me.mlists.service.csproj", "{B5608E4D-DB77-4598-92A4-59BCAE4B9F1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Me.Mlists.Service", "src\Me.Mlists.Service\Me.Mlists.Service.csproj", "{B5608E4D-DB77-4598-92A4-59BCAE4B9F1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F1D43E5-4759-44AD-9AD5-69D72F5AD3A7}"
 	ProjectSection(SolutionItems) = preProject
