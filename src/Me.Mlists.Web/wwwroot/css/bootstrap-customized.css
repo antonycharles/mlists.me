@@ -1,0 +1,92 @@
+﻿.card{
+    border:none;
+}
+
+.bg-success {
+    background-color: #4BA594 !important;
+}
+.text-success {
+    color: #4BA594!important;
+}
+
+.bg-danger {
+    background-color: #D16A6A !important;
+}
+.text-danger {
+    color: #D16A6A !important;
+}
+
+.btn-success {
+    background-color: #4BA594;
+    border-color: #4BA594;
+}
+    .btn-success:hover {
+        background-color: #4BA594;
+        border-color: #4BA594;
+    }
+    .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show > .btn-success.dropdown-toggle {
+        background-color: #4BA594;
+        border-color: #4BA594;
+    }
+
+.btn-outline-success {
+    border-color: #4BA594;
+    color: #4BA594;
+}
+    .btn-outline-success:hover {
+        background-color: #4BA594;
+        border-color: #4BA594;
+    }
+    .btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show > .btn-outline-success.dropdown-toggle {
+        background-color: #4BA594;
+        border-color: #4BA594;
+    }
+
+.btn-danger {
+    background-color: #D16A6A;
+    border-color: #D16A6A;
+}
+
+    .btn-danger:hover {
+        background-color: #D16A6A;
+        border-color: #D16A6A;
+    }
+
+    .btn-danger:not(:disabled):not(.disabled).active, .btn-danger:not(:disabled):not(.disabled):active, .show > .btn-danger.dropdown-toggle {
+        background-color: #D16A6A;
+        border-color: #D16A6A;
+    }
+
+.btn-outline-danger {
+    border-color: #D16A6A;
+    color: #D16A6A;
+}
+
+    .btn-outline-danger:hover {
+        background-color: #D16A6A;
+        border-color: #D16A6A;
+    }
+
+    .btn-outline-danger:not(:disabled):not(.disabled).active, .btn-outline-danger:not(:disabled):not(.disabled):active, .show > .btn-outline-danger.dropdown-toggle {
+        background-color: #D16A6A;
+        border-color: #D16A6A;
+    }
+
+
+.validation-summary-valid {
+    display: none;
+}
+.validation-summary-errors ul{
+    margin:0px;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #798189;
+    color:#FFF;
+}
+
+@media (max-width: 576px) {
+    .navbar-expand-sm .navbar-nav .dropdown-menu{
+        display:block;
+    }
+}

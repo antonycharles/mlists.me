@@ -1,0 +1,78 @@
+﻿@model RegistrarViewModel
+@{
+    ViewData["Title"] = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/jquery-validation-start.js"></script>
+}
+<div class="container mt-3">
+    <section class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-7 col-lg-5">
+            <div class="card mt-4 ml-auto mr-auto">
+                <div class="card-header bg-white">
+                    <h3><i class="fas fa-sign text-secondary"></i> Registre-se</h3>
+                    <p>Olá, preencha os campos para criar uma conta!</p>
+                </div>
+                <div class="card-body">
+                    <form asp-area="Login" asp-controller="Registro" asp-action="Registrar" method="post" class="needs-validation">
+                        <div asp-validation-summary="ModelOnly" data-valmsg-summary="true" class="alert alert-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Nome" class="font-weight-bold"></label>
+                            <input asp-for="Nome" class="form-control" required>
+                            <span class="invalid-feedback" asp-validation-for="Nome"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="font-weight-bold"></label>
+                            <input asp-for="Email" class="form-control" required>
+                            <span class="invalid-feedback" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="Senha" class="font-weight-bold"></label>
+                                    <input asp-for="Senha" class="form-control" required>
+                                    <span class="invalid-feedback" asp-validation-for="Senha"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="ConfirmarSenha" class="font-weight-bold"></label>
+                                    <input asp-for="ConfirmarSenha" class="form-control" required>
+                                    <span class="invalid-feedback" asp-validation-for="ConfirmarSenha"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" value="Logar " class="btn btn-danger btn-block">
+                                Registre-se agora
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-center mb-3">
+                        <h5 class="p-0 m-0"><span class="badge badge-light">ou</span></h5>
+                    </div>
+                    <section>
+                        @{
+                            if (Model.ExternalLogins != null && Model.ExternalLogins.Count > 0)
+                            {
+                                <form id="external-account" asp-area="Login" asp-controller="RegistroExterno" asp-action="RegistroExterno" method="post" class="form-horizontal">
+                                    <div>
+                                        <p>
+                                            @foreach (var provider in Model.ExternalLogins)
+                                            {
+                                                <button type="submit" class="btn btn-block btn-sm btn-@provider.Name" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">Registre-se com @provider.DisplayName</button>
+                                            }
+                                        </p>
+                                    </div>
+                                </form>
+                            }
+                        }
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

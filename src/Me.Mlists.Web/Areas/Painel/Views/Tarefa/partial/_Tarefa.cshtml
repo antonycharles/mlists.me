@@ -1,0 +1,36 @@
+﻿@model Me.Mlists.Models.Tarefa
+
+    <li class="tarefa__item @(Model.IsChecked || Model.IsLixeira ? "checked" : "") list-group-item pl-2 pr-2">
+        <aside class="media">
+            <div class="align-self-center mr-2">
+                @if (!Model.IsChecked || !Model.IsLixeira)
+                {
+                    <form method="post" asp-area="Painel" asp-controller="Tarefa" asp-action="MarcarTarefaCheckedTrue" asp-route-tarefaId="@Model.Id">
+                        <label class="tarefas__item__checkbox">
+                            <input type="checkbox" name="check" onclick="tarefa.sendMarcarTarefaChecked(this)" />
+                            <span class="tarefas__item__checkbox__label"></span>
+                        </label>
+                    </form>
+                }
+                else
+                {
+                    <label class="tarefas__item__checkbox">
+                        <input type="checkbox" name="check" checked disabled/>
+                        <span class="tarefas__item__checkbox__label"></span>
+                    </label>
+                }
+            </div>
+            <div class="media-body align-self-center">
+                <p class="m-0">@Model.Nome</p>
+                <span class="badge badge-pill badge-light text-success">@(Model.DataVencimento != null ? Model.DataVencimento.Value.ToString("dd/MM/yyyy hh:mm") : "")</span>
+            </div>
+            <div class="align-self-center">
+                @if (!Model.IsChecked || !Model.IsLixeira)
+                {
+                    <form method="post" asp-area="Painel" asp-controller="Tarefa" asp-action="MoverTarefaLixeira" asp-route-tarefaId="@Model.Id">
+                        <button class="btn btn-light" type="button" onclick="tarefa.sendMoverTarefaLixeira(this)"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                }
+            </div>
+        </aside>
+    </li>
