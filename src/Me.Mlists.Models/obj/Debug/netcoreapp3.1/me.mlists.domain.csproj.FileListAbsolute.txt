@@ -1,9 +1,0 @@
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\bin\Debug\netcoreapp3.1\me.mlists.domain.deps.json
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\bin\Debug\netcoreapp3.1\me.mlists.domain.dll
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\bin\Debug\netcoreapp3.1\me.mlists.domain.pdb
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.csprojAssemblyReference.cache
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.AssemblyInfoInputs.cache
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.AssemblyInfo.cs
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.csproj.CoreCompileInputs.cache
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.dll
-C:\Users\WDeveloper\Desktop\mlists.me\me.mlists.domain\obj\Debug\netcoreapp3.1\me.mlists.domain.pdb

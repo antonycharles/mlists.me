@@ -1,10 +1,1 @@
-/.vs
-/src/Me.Mlists.Web/bin
-/src/Me.Mlists.Web/obj
-/src/Me.Mlists.Data/obj
-/src/Me.Mlists.Data/bin
-/src/Me.Mlists.Models/obj
-/src/Me.Mlists.Models/bin
-/src/Me.Mlists.Service/obj
-/src/Me.Mlists.Service/bin
 /src/Me.Mlists.Web/appsettings.json
