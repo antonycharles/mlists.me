@@ -17,36 +17,7 @@
 
 <article class="container mt-3">
     <div class="tarefas card" data-lista-id="@Model.Id">
-        <header class="tarefas__header card-header bg-white">
-            <div class="d-flex flex-wrap">
-                <figure class="tarefas__header__figure align-self-center">
-                    <img src="@Model.Monster.LinkUrl" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
-                </figure>
-                <div class=" media-body align-self-center">
-                    <h2 class="tarefas__header__titulo">@Model.Nome</h2>
-                    <p class="tarefas__header__descricao m-0">@Model.Descricao</p>
-                </div>
-                <div class="tarefas__header__menu align-self-center">
-                    <div class="d-inline-block">
-                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <i class="fas fa-cog"></i> Configuração
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button" onclick="lista.getFormModal('@Url.RouteUrl("lista_get_update_lista", new { listaId = Model.Id })')">Alterar</button>
-                            <button class="dropdown-item" type="button">Participantes</button>
-                            <button class="dropdown-item" type="button" onclick="convidado.getFormModal('@Url.Action("ConvidadosLista","Convidado",new { area = "Painel", listaId = Model.Id })')">Convidar amigos</button>
-                            <div class="dropdown-divider"></div>
-                            <form id="logoutForm" class="form-inline" asp-route="lista_post_mover_lixeira_lista" asp-route-listaId="@Model.Id" onsubmit="lista.submitMoverLixeira(this,event,true)">
-                                <button id="logout" type="submit" class="dropdown-item">Deletar</button>
-                            </form>
-                        </div>
-                    </div>
-                    <a asp-area="Painel" asp-controller="Lista" asp-action="Index" class="btn btn-light btn-sm">
-                        <i class="fas fa-angle-left"></i> Voltar
-                    </a>
-                </div>
-            </div>
-        </header>
+        <partial name="partial/_HeaderListaTarefas"/>
         <section class="card-body">
             <div class="breadcrumb m-0">
                 <div class="breadcrumb-item d-flex w-100 justify-content-between">

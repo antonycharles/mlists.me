@@ -1,0 +1,58 @@
+﻿@model CardListaDropDownViewModel
+
+
+@if (Model.IsAtiva)
+{
+    <div class="dropdown-menu dropdown-menu-right">
+        @if (Model.IsBtnVisualizar)
+        {
+            <a class="dropdown-item"
+               asp-area="Painel"
+               asp-controller="Tarefa"
+               asp-action="Index"
+               asp-route-listaId="@Model.Lista.Id">
+                Visualizar
+            </a>
+        }
+        <button class="dropdown-item"
+                type="button"
+                onclick="convidado.getFormModal('@Url.Action("ConvidadosLista","Convidado",new { area = "Painel", listaId = Model.Lista.Id })')">
+            Convidar amigos
+        </button>
+        <button class="dropdown-item"
+                type="button"
+                onclick="participante.getFormModal('@Url.Action("ParticipantesLista","Participante",new { area = "Painel", listaId = Model.Lista.Id })')">
+            Participantes
+        </button>
+        <button class="dropdown-item"
+                type="button"
+                onclick="lista.getFormModal('@Url.RouteUrl("lista_get_update_lista", new { listaId = Model.Lista.Id })')">
+            Alterar
+        </button>
+        @if (Model.IsAdministrador)
+        {
+            <div class="dropdown-divider"></div>
+            <form id="logoutForm" class="form-inline" asp-route="lista_post_mover_lixeira_lista" asp-route-listaId="@Model.Lista.Id" onsubmit="lista.submitMoverLixeira(this,event,false)">
+                <button id="logout" type="submit" class="dropdown-item">Deletar</button>
+            </form>
+        }
+    </div>
+}
+else if(Model.IsAdministrador && Model.IsAtiva == false)
+{
+    <div class="dropdown-menu dropdown-menu-right">
+        <form id="logoutForm" class="form-inline" 
+              asp-route="lista_post_restaurar_ativo" 
+              asp-route-listaId="@Model.Lista.Id" 
+              onsubmit="lista.submitRestaurarAtivo(this,event)">
+            <button id="logout" type="submit" class="dropdown-item">Restaurar</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <form id="logoutForm" class="form-inline" 
+              asp-route="lista_post_exclusao_permanente" 
+              asp-route-listaId="@Model.Lista.Id" 
+              onsubmit="lista.submitExclusaoPermanente(this,event)">
+            <button id="logout" type="submit" class="dropdown-item">Exclusão permanente</button>
+        </form>
+    </div>
+}

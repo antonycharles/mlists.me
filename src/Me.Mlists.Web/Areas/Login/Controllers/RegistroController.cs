@@ -2,6 +2,7 @@
 using Me.Mlists.Service.Services;
 using Me.Mlists.Web.Areas.Login.ViewModels;
 using Me.Mlists.Web.Helpers;
+using Me.Mlists.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -84,8 +85,14 @@ namespace Me.Mlists.Web.Areas.Login.Controllers
                 new { usuarioId = usuario.Id, token = token },
                 Request.Scheme);
 
-            var templateEmail = await this.RenderViewToStringAsync("~/Areas/Login/Views/ConfirmeEmail/partial/_EmailTemplateConfirmacaoEmail.cshtml", 
-                new EmailTemplateConfirmacaoEmailViewModel(callbackUrl));
+            var templateEmail = await this.RenderViewToStringAsync("~/Views/TemplateMail/_EmailComButton.cshtml", 
+                new EmailComButtonViewModel(
+                    titulo: "Seja bem vindo ao MLists!",
+                    linkImagem: "https://img.icons8.com/bubbles/100/000000/meeting.png",
+                    descricao: "Estamos felizes por ter você conosco. Para acessar sua conta primeiro você precisa confirmar seu email clicando no botão abaixo.",
+                    link: callbackUrl,
+                    linkDescricao: "Confirmar email")
+                );
 
             await _emailService.SendEmailAsync(usuario.Email, "Confirmação de email - MLists", templateEmail);
 

@@ -70,6 +70,9 @@ namespace Me.Mlists.Web.Areas.Login.Controllers
                 }
             }
 
+
+            modelo.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             return View(modelo);
         }
 

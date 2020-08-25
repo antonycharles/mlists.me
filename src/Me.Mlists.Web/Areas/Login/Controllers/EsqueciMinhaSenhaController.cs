@@ -2,6 +2,7 @@
 using Me.Mlists.Service.Services;
 using Me.Mlists.Web.Areas.Login.ViewModels;
 using Me.Mlists.Web.Helpers;
+using Me.Mlists.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -49,8 +50,14 @@ namespace Me.Mlists.Web.Areas.Login.Controllers
 
                 var callbackUrl = Url.RouteUrl("get_redefinir_senha", new { token },Request.Scheme);
 
-                var templateEmail = await this.RenderViewToStringAsync("~/Areas/Login/Views/EsqueciMinhaSenha/partial/_EmailTemplateEsqueciMinhaSenha.cshtml",
-                new EmailTemplateEsqueciMinhaSenhaViewModel(callbackUrl));
+                var templateEmail = await this.RenderViewToStringAsync("~/Views/TemplateMail/_EmailComButton.cshtml",
+                new EmailComButtonViewModel(
+                    titulo: "Alteração de senha MLists!",
+                    linkImagem: "https://img.icons8.com/bubbles/100/000000/short-hair-girl-key.png",
+                    descricao: "Para alterar sua senha clique no botão abaixo.",
+                    link: callbackUrl,
+                    linkDescricao: "Alterar senha")
+                );
 
                 await _emailService.SendEmailAsync(modelo.Email,"Alteração de senha - MLists", templateEmail);
 

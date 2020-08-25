@@ -1,0 +1,33 @@
+﻿@model Me.Mlists.Models.Lista
+<div class="lista media" data-lista-id="@Model.Id">
+    <img src="@Model.Monster.LinkUrl" class="lista__img align-self-center mr-3" alt="" />
+    <div class="lista__body media-body align-self-center">
+        @if (Model.ListaStatus == ListaStatusEnum.Ativo)
+        {
+            <h2 class="lista__titulo">
+                <a asp-area="Painel" asp-controller="Tarefa" asp-action="Index" asp-route-listaId="@Model.Id" class="text-dark lista__titulo__text">@Model.Nome</a>
+            </h2>
+        }
+        else
+        {
+            <h2 class="lista__titulo text-dark lista__titulo__text">@Model.Nome</h2>
+        }
+        <div class="d-block mt-4">
+            <button type="button" class="btn btn-sm btn-outline-success pt-0 pb-0">
+                <i class="far fa-check-square mr-1"></i> @Model.Tarefas.Where(x => x.IsChecked == true).Count()
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-danger pt-0 pb-0">
+                <i class="far fa-square mr-1"></i> @Model.Tarefas.Where(x => x.IsChecked == false).Count()
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">
+                <i class="fas fa-users mr-1"></i> @Model.Participantes.Count()
+            </button>
+        </div>
+    </div>
+    <div class="lista__dropdown">
+        <button type="button" class="btn btn-link text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+        <vc:card-lista-drop-down lista="@Model" is-visualizar="true" />
+    </div>
+</div>

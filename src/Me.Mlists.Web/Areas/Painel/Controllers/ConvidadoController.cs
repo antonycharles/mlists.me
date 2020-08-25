@@ -8,6 +8,7 @@ using Me.Mlists.Service.Repositories;
 using Me.Mlists.Service.Services;
 using Me.Mlists.Web.Areas.Painel.ViewModels;
 using Me.Mlists.Web.Helpers;
+using Me.Mlists.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -119,8 +120,17 @@ namespace Me.Mlists.Web.Areas.Painel.Controllers
                 new { area = "Painel" },
                 Request.Scheme);
 
-            var templateEmail = await this.RenderViewToStringAsync("~/Areas/Painel/Views/Convidado/partial/_EmailTemplateConvidado.cshtml",
-                new EmailTemplateConvidadoViewModel(callbackUrl, User.Identity.Name));
+            //var templateEmail = await this.RenderViewToStringAsync("~/Areas/Painel/Views/Convidado/partial/_EmailTemplateConvidado.cshtml",
+                //new EmailTemplateConvidadoViewModel(callbackUrl, ));
+
+            var templateEmail = await this.RenderViewToStringAsync("~/Views/TemplateMail/_EmailComButton.cshtml",
+                new EmailComButtonViewModel(
+                    titulo: "Convite MLists!",
+                    linkImagem: "https://img.icons8.com/bubbles/100/000000/man-with-paper-plane.png",
+                    descricao: $"Você recebeu um convite para participar de uma lista de tarefas no MLists. Convite enviado por: {User.Identity.Name}",
+                    link: callbackUrl,
+                    linkDescricao: "Responder convite")
+                );
 
             await _emailService.SendEmailAsync(convidado.EmailConvite, "Convite para Lista - MLists", templateEmail);
         }
