@@ -2,6 +2,9 @@
 ##### To Do List com ícones de monstros feito com .Net Core
 ![Mlists me](https://user-images.githubusercontent.com/24979597/89239321-386f8280-d5cf-11ea-81c6-cd37bc5cefc7.gif)
 
+### Arquitetura
+![arquitetura-sistema](https://user-images.githubusercontent.com/24979597/91216365-325f5400-e6ec-11ea-9c21-d43698b85f7c.png)
+
 ## Requisitos
 Para executar o projeto, será necessário instalar os seguintes programas:
 
