@@ -1,14 +1,12 @@
-﻿@model EmailTemplateConvidadoViewModel
+﻿@model EmailComButtonViewModel
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title></title>
+    <title>MLists</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <style type="text/css">
-        /* CLIENT-SPECIFIC STYLES */
         body,
         table,
         td,
@@ -27,7 +25,6 @@
             -ms-interpolation-mode: bicubic;
         }
 
-        /* RESET STYLES */
         img {
             border: 0;
             height: auto;
@@ -47,7 +44,6 @@
             width: 100% !important;
         }
 
-        /* iOS BLUE LINKS */
         a[x-apple-data-detectors] {
             color: inherit !important;
             text-decoration: none !important;
@@ -57,7 +53,6 @@
             line-height: inherit !important;
         }
 
-        /* MOBILE STYLES */
         @@media screen and (max-width:600px) {
             h1 {
                 font-size: 32px !important;
@@ -65,18 +60,13 @@
             }
         }
 
-        /* ANDROID CENTER FIX */
         div[style*="margin: 16px 0;"] {
             margin: 0 !important;
         }
     </style>
 </head>
-
 <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
-    <!-- HIDDEN PREHEADER TEXT -->
-    <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> Convite para participar da lista de tarefas. </div>
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <!-- LOGO -->
         <tr>
             <td bgcolor="#CC3636" align="center">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
@@ -91,8 +81,10 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 45px;  font-family: Helvetica, Arial, sans-serif; font-weight: 400; margin: 2;">Convite MLists!</h1>
-                            <img src="https://img.icons8.com/bubbles/100/000000/meeting.png" style="display: block; border: 0px;" />
+                            <h1 style="font-size: 45px;  font-family: Helvetica, Arial, sans-serif; font-weight: 400; margin: 2;">
+                                @Model.Titulo
+                            </h1>
+                            <img src="@Model.LinkImagem" style="display: block; border: 0px;" />
                         </td>
                     </tr>
                 </table>
@@ -103,8 +95,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;text-align:center;">
-                            <p>Você recebeu um convite para participar de uma lista de tarefas no MLists.</p>
-                            <p>Convite enviado por <b>@Model.Nome</b></p>
+                            <p style="margin: 0;">@Model.Descricao</p>
                         </td>
                     </tr>
                     <tr>
@@ -115,25 +106,15 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#CC3636">
-                                                    <a href="@Model.Url" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #CC3636; display: inline-block;">Responder convite</a>
+                                                    <a href="@Model.Link" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #CC3636; display: inline-block;">
+                                                        @Model.LinkDescricao
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                             </table>
-                        </td>
-                    </tr> <!-- COPY -->
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td bgcolor="#f4f4f4" align="center" style="padding: 30px 10px 0px 10px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-                    <tr>
-                        <td bgcolor="#CACACA" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; ;;">
-                            <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Need more help?</h2>
-                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #cc3636; font-weight:700">Estamos aqui para ajudá-lo</a></p>
                         </td>
                     </tr>
                 </table>

@@ -1,0 +1,25 @@
+﻿@model Me.Mlists.Models.Lista
+<header class="tarefas__header card-header bg-white">
+    <div class="d-flex flex-wrap">
+        <figure class="tarefas__header__figure align-self-center">
+            <img src="@Model.Monster.LinkUrl" class="tarefas__header__figure__img align-self-center" alt="@Model.Nome" />
+        </figure>
+        <div class=" media-body align-self-center">
+            <h2 class="tarefas__header__titulo">@Model.Nome</h2>
+            <p class="tarefas__header__descricao m-0">@Model.Descricao</p>
+        </div>
+        <div class="tarefas__header__menu align-self-center">
+            <div class="d-inline-block">
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-cog"></i> Configuração
+                </button>
+                <vc:card-lista-drop-down 
+                        lista="@Model" 
+                        is-visualizar="false"/>
+            </div>
+            <a asp-area="Painel" asp-controller="Lista" asp-action="Index" class="btn btn-light btn-sm">
+                <i class="fas fa-angle-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+</header>
