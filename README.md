@@ -30,8 +30,7 @@ Para iniciar o desenvolvimento, é necessário:
   <li>
     Adicionar informações do banco de dados no arquivo appsettings.json
     <pre>"ConnectionStrings": {
-    "AppContextConnection": "Server=localhost;DataBase=NOME_BANCO_DE_DADOS;Uid=root;Pwd=SENHA_BANCO_DE_DADOS",
-    "AppIdentityContextConnection": "Server=localhost;DataBase=NOME_BANCO_DE_DADOS;Uid=root;Pwd=SENHA_BANCO_DE_DADOS"
+    "AppContextConnection": "Server=localhost;DataBase=NOME_BANCO_DE_DADOS;Uid=root;Pwd=SENHA_BANCO_DE_DADOS"
   },</pre>
   </li>
   <li>

@@ -11,9 +11,6 @@
             @User.Identity.Name
         </button>
         <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
             <form id="logoutForm" class="form-inline" asp-area="Login" asp-controller="Login" asp-action="Logoff" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button id="logout" type="submit" class="dropdown-item">
                     <i class="fas fa-sign-out-alt text-info"></i> Sair
