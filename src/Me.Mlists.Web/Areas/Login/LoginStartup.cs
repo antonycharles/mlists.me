@@ -19,11 +19,12 @@ namespace me.mlists.web.Areas.Login
             {
                 services.AddDbContext<AppIdentityContext>(options =>
                     options.UseMySql(
-                        context.Configuration.GetConnectionString("AppIdentityContextConnection")));
+                        context.Configuration.GetConnectionString("AppContextConnection")));
 
                 services.AddDefaultIdentity<ApplicationUser>(options => {
                         options.Password.RequireNonAlphanumeric =
                         options.Password.RequireLowercase =
+                        options.Password.RequireDigit =
                         options.Password.RequireUppercase = false;
                         options.SignIn.RequireConfirmedAccount = true;
 
@@ -43,7 +44,7 @@ namespace me.mlists.web.Areas.Login
                     options.ExpireTimeSpan = TimeSpan.FromDays(5);
 
                     options.LoginPath = "/l/login";
-                    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                    options.AccessDeniedPath = "/l/login";
                     options.SlidingExpiration = true;
                 });
 
